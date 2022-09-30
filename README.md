@@ -1,5 +1,11 @@
 # create-svelte
 
+TODO:
+
+- figure out way to use is-land without copying over script
+- put is "islands" directory and auto-bundle everything in that directory
+- run islands dev in parallel?
+
 Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
 
 ## Creating a project

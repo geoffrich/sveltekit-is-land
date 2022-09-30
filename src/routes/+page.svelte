@@ -1,2 +1,21 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<script>
+	import Count from './Count.svelte';
+
+	const islandProps = {
+		'on:idle': true,
+		autoinit: 'svelte-ssr',
+		import: '/islands/islands.js'
+	};
+
+	// TODO: FOUC since server-render has different style classes
+	// only in dev
+</script>
+
+<p>Is-land</p>
+
+<is-land {...islandProps}>
+	<Count />
+</is-land>
+
+<p>Static one</p>
+<Count />

@@ -6,12 +6,15 @@
 		"dev": "vite dev",
 		"build": "vite build",
 		"preview": "vite preview",
+		"islands:dev": "vite -c islands.config.js",
+		"islands:build": "vite build -c islands.config.js",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json --watch",
 		"lint": "prettier --plugin-search-dir . --check .",
 		"format": "prettier --plugin-search-dir . --write ."
 	},
 	"devDependencies": {
+		"@11ty/is-land": "^2.0.3",
 		"@sveltejs/adapter-auto": "next",
 		"@sveltejs/kit": "next",
 		"prettier": "^2.6.2",
