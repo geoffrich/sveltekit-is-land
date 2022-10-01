@@ -10,7 +10,7 @@
 </script>
 
 {#if hydrated}
-	<p>I've been hydrated!</p>
+	<p>I've been hydrated! 😋</p>
 {:else}
 	<p>So thirsty 😰</p>
 {/if}
