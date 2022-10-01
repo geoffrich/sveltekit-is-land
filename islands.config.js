@@ -1,27 +1,40 @@
-import { resolve } from 'path';
 import { svelte } from '@sveltejs/vite-plugin-svelte';
+import { defineConfig } from 'vite';
+import fs from 'fs';
+import { join } from 'path';
 
-/** @type {import('vite').UserConfig} */
-const config = {
-	build: {
-		lib: {
-			entry: resolve(__dirname, 'src/routes/Count.svelte'),
-			fileName: 'Count',
-			formats: ['es']
+export default defineConfig(async () => {
+	// TODO: improve logic, e.g. nested folders, Test.2.svelte
+	const islandsFolder = join(__dirname, 'src/lib/islands');
+	const islands = fs.readdirSync(islandsFolder);
+	const input = islands.reduce((acc, fileName) => {
+		const key = fileName.split('.')[0];
+		acc[key] = join(islandsFolder, fileName);
+		return acc;
+	}, {});
+
+	return {
+		build: {
+			lib: {
+				formats: ['es']
+			},
+			rollupOptions: {
+				// in Vite 3.2, potentially multiple entries instead
+				// https://github.com/vitejs/vite/pull/7047
+				input,
+				output: {
+					dir: 'static/islands',
+					entryFileNames: '[name].js' // TODO: hash filenames?
+				}
+			}
 		},
-		rollupOptions: {
-			output: {
-				dir: 'static/islands'
-			}
-		}
-	},
-	plugins: [
-		svelte({
-			compilerOptions: {
-				hydratable: true
-			}
-		})
-	] // TODO: can we hook into SvelteKit somehow?
-};
-
-export default config;
+		// TODO: can we hook into SvelteKit somehow?
+		plugins: [
+			svelte({
+				compilerOptions: {
+					hydratable: true
+				}
+			})
+		]
+	};
+});
