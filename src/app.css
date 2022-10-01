@@ -34,3 +34,8 @@ h3 {
 a {
 	color: black;
 }
+
+pre code {
+	display: block;
+	overflow: auto;
+}

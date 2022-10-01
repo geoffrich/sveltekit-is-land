@@ -3,6 +3,7 @@ import { defineConfig } from 'vite';
 import fs from 'fs';
 import { join } from 'path';
 
+// TODO: could this be a Vite plugin?
 export default defineConfig(async () => {
 	// TODO: improve logic, e.g. nested folders, Test.2.svelte
 	const islandsFolder = join(__dirname, 'src/lib/islands');
@@ -25,7 +26,7 @@ export default defineConfig(async () => {
 				// https://github.com/vitejs/vite/pull/7047
 				input,
 				output: {
-					dir: 'static/islands',
+					dir: 'static/__islands',
 					entryFileNames: '[name].js' // TODO: hash filenames?
 				}
 			}

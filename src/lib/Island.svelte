@@ -29,7 +29,7 @@
 	export let islandProps = {};
 
 	const id = `island-${uuid()}`;
-	const importPath = dev ? `/src/lib/islands/${name}.svelte` : `/islands/${name}.js`;
+	const importPath = dev ? `/src/lib/islands/${name}.svelte` : `/__islands/${name}.js`;
 
 	// once we start client-side rendering, we don't want to initialize the island and import unnecessary code
 	const renderIsland = !browser;

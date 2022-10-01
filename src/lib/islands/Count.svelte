@@ -14,5 +14,6 @@
 		font-weight: 700;
 		border: none;
 		border-radius: 0.25rem;
+		cursor: pointer;
 	}
 </style>
