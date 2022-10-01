@@ -1,9 +1,16 @@
 <script>
 	export let title = 'hello';
 	let count = 0;
+
+	// we can't use $app/environment here since this is being bundled outside of SvelteKit
+	let isBrowser = typeof window !== 'undefined';
 </script>
 
-<button on:click={() => count++}>{title} {count}</button>
+<button
+	on:click={() => count++}
+	style:cursor={isBrowser ? 'pointer' : 'not-allowed'}
+	disabled={!isBrowser}>{title} {count}</button
+>
 
 <style>
 	button {
@@ -14,6 +21,9 @@
 		font-weight: 700;
 		border: none;
 		border-radius: 0.25rem;
-		cursor: pointer;
+	}
+
+	button:disabled {
+		filter: grayscale(1);
 	}
 </style>
