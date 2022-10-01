@@ -13,6 +13,8 @@ export default defineConfig(async () => {
 		return acc;
 	}, {});
 
+	input['is-land'] = join(__dirname, 'node_modules/@11ty/is-land/is-land.js');
+
 	return {
 		build: {
 			lib: {
