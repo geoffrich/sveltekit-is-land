@@ -1,7 +1,9 @@
 <script>
 	import { v4 as uuid } from '@lukeed/uuid';
 	import { devalue } from 'devalue';
-	import { dev } from '$app/environment';
+	// TODO: if this is a package, I can't get these values
+	// https://github.com/sveltejs/kit/issues/6449
+	import { dev, browser } from '$app/environment';
 
 	/**
 	 * The component you want to initialize
@@ -28,12 +30,16 @@
 
 	const id = `island-${uuid()}`;
 	const importPath = dev ? `/src/lib/islands/${name}.svelte` : `/islands/${name}.js`;
+
+	// once we start client-side rendering, we don't want to initialize the island and import unnecessary code
+	const renderIsland = !browser;
 </script>
 
 <is-land {...islandProps} {id}>
 	<svelte:component this={component} {...props} />
-	<template data-island>
-		{@html `
+	{#if renderIsland}
+		<template data-island>
+			{@html `
 	<script type="module">
 		import App from '${importPath}';
 		new App({
@@ -43,5 +49,6 @@
 		});
 	</script>
 	`}
-	</template>
+		</template>
+	{/if}
 </is-land>
