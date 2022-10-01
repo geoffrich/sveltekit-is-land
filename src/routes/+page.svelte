@@ -5,10 +5,22 @@
 	import Island from '$lib/Island.svelte';
 </script>
 
-<h2>Static one</h2>
+<h1>SvelteKit + {'<is-land>'}</h1>
+
+<p>
+	Experimenting with partial hydration in SvelteKit using <a href="https://github.com/11ty/is-land"
+		>@11ty/is-land</a
+	>
+</p>
+
+<p>This page does not use SvelteKit's client-side rendering. Check out the network tab!</p>
+
+<p><a href="https://github.com/geoffrich/sveltekit-is-land">Demo repo</a></p>
+
+<h2>Static one -- SSRd by SK, no hydration</h2>
 <Count title="Static" />
 
-<h2>is-land</h2>
+<h2>Hydrated with is-land</h2>
 
 <Island component={Count} name="Count" />
 
