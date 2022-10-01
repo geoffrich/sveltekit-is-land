@@ -4,7 +4,7 @@
 	"private": true,
 	"scripts": {
 		"dev": "vite dev",
-		"build": "vite build && npm run islands:build",
+		"build": "npm run islands:build && vite build",
 		"preview": "vite preview",
 		"islands:build": "vite build -c islands.config.js",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json",
