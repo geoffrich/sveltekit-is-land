@@ -1,50 +1,36 @@
 <script>
-	import { v4 as uuid } from '@lukeed/uuid';
-	import Count from './Count.svelte';
-	import { dev } from '$app/environment';
-
-	const importPath = dev ? '/src/routes/Count.svelte' : '/islands/Count.js';
-	const islandProps = {
-		'on:idle': true,
-		autoinit: 'svelte-ssr',
-		import: importPath
-	};
-
-	const id = uuid();
-
-	const props = {
-		title: 'is-land'
-	};
+	import Count from '$lib/islands/Count.svelte';
+	import Mount from '$lib/islands/Mount.svelte';
+	import Click from '$lib/islands/Click.svelte';
+	import Island from '$lib/Island.svelte';
 </script>
+
+<h2>Static one</h2>
+<Count title="Static" />
 
 <h2>is-land</h2>
 
-<is-land {...islandProps}>
-	<Count />
-</is-land>
+<Island component={Count} name="Count" />
 
-<h2>is-land with props</h2>
+<h2>With props</h2>
 
-<is-land {...{ 'on:idle': true }}>
-	<div id="island-{id}">
-		<Count {...props} />
-	</div>
+<Island component={Count} name="Count" props={{ title: 'island' }} />
 
-	<template data-island>
-		{@html `
-	<script type="module">
-		import App from '${importPath}';
-		new App({
-			target: document.getElementById('island-${id}'),
-			props: {
-				title: 'is-land'
-			},
-			hydrate: true
-		});
-	</script>
-	`}
-	</template>
-</is-land>
+<h2>With hydration on click</h2>
 
-<p>Static one</p>
-<Count />
+<Island component={Click} name="Click" islandProps={{ 'on:interaction': true }} />
+
+<h2>Scroll down...</h2>
+
+<hr style:height="100vh" />
+
+<h2>Without hydration</h2>
+<Mount />
+
+<h2>With hydration on visible</h2>
+
+<Island component={Mount} name="Mount" islandProps={{ 'on:visible': true }} />
+
+<h2>With hydration on hover</h2>
+
+<Island component={Mount} name="Mount" islandProps={{ 'on:interaction': 'mouseenter,focusin' }} />
