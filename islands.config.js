@@ -34,7 +34,8 @@ export default defineConfig(async () => {
 		plugins: [
 			svelte({
 				compilerOptions: {
-					hydratable: true
+					hydratable: true,
+					css: false
 				}
 			})
 		]
