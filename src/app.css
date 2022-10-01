@@ -1,3 +1,7 @@
+* {
+	box-sizing: border-box;
+}
+
 html {
 	max-width: 70ch;
 	padding: 3em 1em;
