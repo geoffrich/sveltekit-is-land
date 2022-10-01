@@ -5,9 +5,8 @@ import { svelte } from '@sveltejs/vite-plugin-svelte';
 const config = {
 	build: {
 		lib: {
-			entry: resolve(__dirname, 'src/islands.js'),
-			name: 'islands',
-			fileName: 'islands',
+			entry: resolve(__dirname, 'src/routes/Count.svelte'),
+			fileName: 'Count',
 			formats: ['es']
 		},
 		rollupOptions: {
