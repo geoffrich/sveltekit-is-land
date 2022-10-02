@@ -9,11 +9,7 @@
 	});
 </script>
 
-<button
-	on:click={() => count++}
-	style:cursor={hydrated ? 'pointer' : 'not-allowed'}
-	disabled={!hydrated}>{title} {count}</button
->
+<button on:click={() => count++} disabled={!hydrated}>{title} {count}</button>
 
 <style>
 	button {
@@ -24,9 +20,11 @@
 		font-weight: 700;
 		border: none;
 		border-radius: 0.25rem;
+		cursor: pointer;
 	}
 
 	button:disabled {
 		filter: grayscale(1);
+		cursor: not-allowed;
 	}
 </style>
