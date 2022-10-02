@@ -1,15 +1,18 @@
 <script>
+	import { onMount } from 'svelte';
 	export let title = 'hello';
 	let count = 0;
+	let hydrated = false;
 
-	// we can't use $app/environment here since this is being bundled outside of SvelteKit
-	let isBrowser = typeof window !== 'undefined';
+	onMount(() => {
+		hydrated = true;
+	});
 </script>
 
 <button
 	on:click={() => count++}
-	style:cursor={isBrowser ? 'pointer' : 'not-allowed'}
-	disabled={!isBrowser}>{title} {count}</button
+	style:cursor={hydrated ? 'pointer' : 'not-allowed'}
+	disabled={!hydrated}>{title} {count}</button
 >
 
 <style>
