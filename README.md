@@ -1,5 +1,7 @@
 # SvelteKit + `<is-land>`
 
+![](https://raw.githubusercontent.com/geoffrich/sveltekit-is-land/main/static/social.png)
+
 This is an experiment with adding partial hydration to a [SvelteKit](https://kit.svelte.dev/) site with [@11ty/is-land](https://github.com/11ty/is-land), a "framework independent partial hydration islands architecture implementation."
 
 By using the provided `Island.svelte` component, you can selectively hydrate individual components instead of the whole page.

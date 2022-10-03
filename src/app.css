@@ -39,3 +39,7 @@ pre code {
 	display: block;
 	overflow: auto;
 }
+
+img {
+	width: 100%;
+}
