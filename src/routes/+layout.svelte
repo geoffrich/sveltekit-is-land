@@ -19,10 +19,12 @@
 		property="og:description"
 		content="A partially-hydrated SvelteKit site using @11ty/is-land"
 	/>
+	<meta name="twitter:image" content="https://sveltekit-is-land.vercel.app/social.png" />
 	<meta name="twitter:card" content="summary" />
 	<meta name="twitter:creator" content="@geoffrich_" />
 	<meta property="og:image" content="https://sveltekit-is-land.vercel.app/social.png" />
-	<meta name="twitter:image" content="https://sveltekit-is-land.vercel.app/social.png" />
+	<meta name="twitter:image:alt" content="Page image for SvelteKit + is-land" />
+	<meta property="og:image:alt" content="Page image for SvelteKit + is-land" />
 </svelte:head>
 
 <nav data-sveltekit-prefetch>
