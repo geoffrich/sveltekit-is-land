@@ -10,9 +10,8 @@
 <h1>SvelteKit + {'<is-land>'}</h1>
 
 <p>
-	Experimenting with partial hydration in SvelteKit using <a href="https://github.com/11ty/is-land"
-		>@11ty/is-land</a
-	>
+	Experimenting with partial hydration in <a href="https://kit.svelte.dev/">SvelteKit</a> using
+	<a href="https://github.com/11ty/is-land">@11ty/is-land</a>
 </p>
 
 {#if browser}
@@ -52,3 +51,10 @@
 <h2>With hydration on visible</h2>
 
 <Island component={Mount} name="Mount" islandProps={{ 'on:visible': true }} />
+
+<h2>Hydration on visible in a details/summary</h2>
+
+<details>
+	<summary>Show component</summary>
+	<Island component={Mount} name="Mount" islandProps={{ 'on:visible': true }} />
+</details>

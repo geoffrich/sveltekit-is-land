@@ -1,23 +1,35 @@
 <script>
 	import { onMount } from 'svelte';
 
-	let state = 'not loaded';
-	let dots = 0;
+	let hydrateTime = '';
+	let secondsAgo = 0;
+	let start = 0;
+
+	function getFormattedTimestamp() {
+		return new Intl.DateTimeFormat('en-US', {
+			dateStyle: 'medium',
+			timeStyle: 'medium'
+		}).format(new Date());
+	}
+
 	onMount(() => {
-		state = 'loading';
-		const interval = setInterval(() => dots++, 300);
-		const timeout = setTimeout(() => {
-			state = 'loaded';
-			clearInterval(interval);
-		}, 4000);
+		hydrateTime = getFormattedTimestamp();
+		start = Date.now();
+
+		let interval = setInterval(() => {
+			secondsAgo = Math.floor((Date.now() - start) / 1000);
+		}, 1000);
 
 		return () => {
 			clearInterval(interval);
-			clearTimeout(timeout);
 		};
 	});
 </script>
 
-<p>
-	I'm {state}{#each { length: dots } as _}.{/each}{#if state === 'loaded'}!{/if}
-</p>
+{#if hydrateTime}
+	<p>
+		Hydrated on {hydrateTime} ({secondsAgo} seconds ago)
+	</p>
+{:else}
+	<p>Not hydrated</p>
+{/if}
