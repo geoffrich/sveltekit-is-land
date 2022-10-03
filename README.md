@@ -1,6 +1,6 @@
 # SvelteKit + `<is-land>`
 
-![](https://raw.githubusercontent.com/geoffrich/sveltekit-is-land/main/static/social.png)
+![SvelteKit islands over an image of Outset Island from Zelda](https://raw.githubusercontent.com/geoffrich/sveltekit-is-land/main/static/social.png)
 
 This is an experiment with adding partial hydration to a [SvelteKit](https://kit.svelte.dev/) site with [@11ty/is-land](https://github.com/11ty/is-land), a "framework independent partial hydration islands architecture implementation."
 
