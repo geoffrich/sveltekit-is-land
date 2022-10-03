@@ -26,7 +26,7 @@ h3 {
 	text-decoration-thickness: 4px;
 }
 
-*:focus-visible {
+*:focus-visible:where(:not(body)) {
 	outline: 3px solid var(--primary);
 	outline-offset: 4px;
 }
