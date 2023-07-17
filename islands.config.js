@@ -2,6 +2,7 @@ import { svelte } from '@sveltejs/vite-plugin-svelte';
 import { defineConfig } from 'vite';
 import fs from 'fs';
 import { join } from 'path';
+import { fileURLToPath, URL } from 'node:url'
 
 // TODO: could this be a Vite plugin?
 export default defineConfig(async () => {
@@ -39,6 +40,11 @@ export default defineConfig(async () => {
 					css: false
 				}
 			})
-		]
+		],
+		resolve: {
+			alias: {
+				'$lib': fileURLToPath(new URL('./src/lib', import.meta.url))
+			}
+		}
 	};
 });
